@@ -18,6 +18,7 @@ function install_nix {
   add_config "max-jobs = auto"
   # Allow binary caches for runner user.
   add_config "trusted-users = root $USER"
+  add_config "sandbox = false"
 
   installer_options=(
     --daemon
