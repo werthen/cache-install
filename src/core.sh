@@ -48,7 +48,7 @@ function install_nix {
   fi
 }
 
-function install_via_nix {
+function build_via_nix {
   if [[ -f "$INPUT_NIX_FILE" ]]; then
     # Path is set correctly by set_paths but that is only available outside of this Action.
     PATH=/nix/var/nix/profiles/default/bin/:$PATH
@@ -91,10 +91,11 @@ elif [ "$TASK" == "install-with-nix" ]; then
   set_nix_path
   install_nix
   set_paths
-  install_via_nix
+  build_via_nix
 elif [ "$TASK" == "install-from-cache" ]; then
   set_nix_path
   set_paths
+  build_via_nix
 elif [ "$TASK" == "prepare-save" ]; then
   prepare
 else
